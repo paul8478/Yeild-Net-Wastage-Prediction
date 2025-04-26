@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Yield Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Crop Yield Prediction</h1>
+    <form method="POST" action="/predict">
+        <label>Crop Type:</label>
+        <select name="crop_type">
+            <option value="rice">Rice</option>
+            <option value="tomato">Tomato</option>
+        </select><br>
+
+        <label>Area (bigha):</label>
+        <input type="number" name="area" required step="0.1"><br>
+
+        <label>Seeds (kg):</label>
+        <input type="number" name="seeds" required step="0.1"><br>
+
+        <label>PH Level:</label>
+        <input type="number" name="ph" required step="0.1"><br>
+
+        <label>Water (ml):</label>
+        <input type="number" name="water" required><br>
+
+        <label>Investment (Rs):</label>
+        <input type="number" name="investment" required><br>
+
+        <label>Flood Impact (%):</label>
+        <input type="number" name="flood_impact" required step="0.1"><br>
+
+        <label>Disease Impact (%):</label>
+        <input type="number" name="disease_impact" required step="0.1"><br>
+
+        <label>Temperature (°C):</label>
+        <input type="number" name="temperature" required step="0.1"><br>
+
+        <label>Other Damage (%):</label>
+        <input type="number" name="other_damage" required step="0.1"><br>
+
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>

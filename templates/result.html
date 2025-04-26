@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Prediction Results for {{ crop_type|capitalize }}</h1>
+    <p>Predicted Production: {{ predicted|round(2) }} kg</p>
+    <p>Net Produced: {{ net_produced|round(2) }} kg</p>
+    <p>Net Wastage: {{ net_wastage|round(2) }} kg</p>
+    
+    <h2>Feature Deviation Scores</h2>
+    <ul>
+    {% for feature, score in deviations.items() %}
+        <li>{{ feature }}: {{ score|round(2) }}%</li>
+    {% endfor %}
+    </ul>
+    
+    <a href="/">Make Another Prediction</a>
+</body>
+</html>

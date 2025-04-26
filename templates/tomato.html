@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tomato Prediction</title>
+</head>
+<body>
+    <h1>Tomato Production Prediction</h1>
+    <form method="POST">
+        <p><label>Area (bigha): <input type="number" step="any" name="area" required></label></p>
+        <p><label>Seeds shown (kg): <input type="number" step="any" name="seeds" required></label></p>
+        <p><label>PH Level: <input type="number" step="any" name="ph" required></label></p>
+        <p><label>Water (ml): <input type="number" step="any" name="water" required></label></p>
+        <p><label>Investment (Rs): <input type="number" step="any" name="investment" required></label></p>
+        <p><label>Flood Impact (%): <input type="number" step="any" name="flood_impact" required></label></p>
+        <p><label>Disease Impact (%): <input type="number" step="any" name="disease_impact" required></label></p>
+        <p><label>Temperature: <input type="number" step="any" name="temperature" required></label></p>
+        <p><label>Extra Damage Impact (%): <input type="number" step="any" name="other_damage_impact" required></label></p>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if submitted %}
+    <h2>Results:</h2>
+    <h3>Model Evaluation Metrics:</h3>
+    <p>MAE: {{ metrics.MAE }}</p>
+    <p>MSE: {{ metrics.MSE }}</p>
+    <p>RMSE: {{ metrics.RMSE }}</p>
+    <p>R² Score: {{ metrics.R2 }}</p>
+    <p>Predicted Production: {{ predicted_production }}</p>
+    <p>Net Produced: {{ net_produced }}kg</p>
+    <p>Net Wastage: {{ net_wastage }}kg</p>
+    <h3>Feature Ranking:</h3>
+    {% for rank, (feature, score) in ranked_features|enumerate(1) %}
+        <p>{{ rank }}. {{ feature }} (Impact Score: {{ score|round(2) }})</p>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>
